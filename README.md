@@ -7,3 +7,4 @@ Esta es una version de desarrollo, y sera terminada lo mas pronto posible
 - Construir el modulo con rollup
 - remlazar vue-octicon con los iconos en SVG
 - remplazar axios con fetch
+- crear los test unitarios
