@@ -1,7 +1,30 @@
 {
   "name": "v-github-activity",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "description": "Componente Vue para mostrar la actividad reciente de github",
+  "author": "amaury.tobiasqr@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amaury-tobias/v-github-activity.git"
+  },
+  "keywords": [
+    "github",
+    "activity",
+    "vue",
+    "vue-component"
+  ],
+  "module": "src/index.js",
+  "files": [
+    "dist/*",
+    "src/**/*.vue",
+    "src/**",
+    "package.json",
+    "README",
+    "CHANGELOG",
+    "LICENSE"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,8 +32,8 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "axios": "^0.19.0",
+    "vue-octicon": "^2.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
@@ -19,12 +42,13 @@
     "@vue/cli-service": "^3.10.0",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
-    "babel-eslint": "^10.0.1",
-    "chai": "^4.1.2",
-    "eslint": "^5.16.0",
+    "babel-eslint": "^10.0.2",
+    "chai": "^4.2.0",
+    "eslint": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^5.2.3",
     "prettier": "^1.18.2",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }
 }
