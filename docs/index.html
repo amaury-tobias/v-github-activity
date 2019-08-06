@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>v-github-activity</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/v-github-activity"></script>
+  </head>
+  <body>
+    <a id="fork" href="https://github.com/amaury-tobias/v-avatar"
+      ><img
+        width="149"
+        height="149"
+        src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
+        class="attachment-full size-full"
+        alt="Fork me on GitHub"
+        data-recalc-dims="1"
+    /></a>
+
+    <div id="app">
+      <section class="hero">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <h1 class="title is-size-1">
+              <v-avatar inline username="V A" rounded></v-avatar>
+              v-github-activity
+            </h1>
+            <h2 class="subtitle heading has-text-weight-light">
+              Vue.js Component
+            </h2>
+          </div>
+        </div>
+      </section>
+
+
+       <section class="section">
+        <p class="title is-size-2">Instalación</p>
+        <p><code>npm install v-github-activity</code></p>
+        <br />
+        <p class="title is-size-2">Uso</p>
+        <p>
+          v-github-activity es un modulo UMD, por lo que puede ser utilizado en tanto en
+          una instancia de Vue como en Nuxt como en un entorno non-modular donde
+          <code>githubFeed</code> sera registrada como variable global.
+        </p>
+        <br />
+        <p class="title is-size-4">VUE COMPONENT</p>
+        <pre><code class="lang-html">
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;github-feed login='amaury-tobias'&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
+          </code></pre>
+        <br />
+        <p class="title is-size-4">VUE GLOBAL</p>
+        <pre><code class="lang-js">
+  import Vue from "vue"
+  import githubFeed from "v-github-activity"
+
+  Vue.use(githubFeed);
+          </code></pre>
+        <br>
+        <p class="title is-size-4">NUXT</p>
+        <p><code>./plugins/githubFeed.js</code></p>
+        <pre><code class="lang-js">
+  import Vue from "vue"
+  import githubFeed from "v-github-activity"
+
+  Vue.use(githubFeed);
+          </code></pre>
+        <br>
+        <p><code>nuxt.config.js</code></p>
+        <pre><code class="lang-js">
+  module.exports = {
+    plugins: ["~/plugins/githubFeed.js"]
+  };
+          </code></pre>
+        <br>
+        <p><code>*.vue &lt;template&gt;</code></p>
+        <pre><code class="lang-html">
+  &lt;github-feed login='amaury-tobias'&gt;</span>
+          </code></pre>
+          <br>
+          <p class="title is-size-4">BROWSER</p>
+          <pre><code class="lang-html">
+  &lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"&gt;&lt;/script&gt;
+        &lt;script src="https://unpkg.com/v-github-activity"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id="app"&gt;
+          &lt;github-feed login='amaury-tobias'&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+          Vue.use(githubFeed)
+          var app = new Vue({
+            el: "#app"
+          });
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
+          </code></pre>
+          <br>
+          <p class="title is-size-4">PROPIEDADES</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Required</th>
+              <th>Default</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>login</td>
+              <td>Y</td>
+              <td>-</td>
+              <td>String</td>
+              <td>GitHub username</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p class="title is-size-4">BUILD SETUP</p>
+        <pre><code class="lang-bash">
+  # install dependencies
+  npm install
+
+  # serve whith hot reload al localhost:8080
+  npm run serve
+
+  # build
+  npm run build
+          </code></pre>
+          <br>
+          <p class="title is-size-4">TEST</p>
+        <pre><code class="lang-bash">npm test</code></pre>
+        <br>
+        <p class="title is-size-4">DEMO</p>
+        <code>&lt;github-feed login="amaury-tobias" /&gt;</code>
+        <github-feed login="amaury-tobias"/>
+<hr>
+      </section>
+
+    </div>
+    <script>
+      Vue.use(githubFeed)
+      var app = new Vue({
+        el: '#app'
+      })
+    </script>
+    <style>
+      #fork {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    </style>
+  </body>
+</html>

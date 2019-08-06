@@ -1,3 +1,12 @@
+### v1.0.0 - Akita
+
+- 🔮 Replace octicons with SVG
+- 🎇 Added docs/ demo and documentation
+- 🎇 Added `npm run serve` to dev enviroment
+- ❌ Removed `octicon` component
+- ❌ Removed default value on `login` prop
+- ❌ Removed unnecessary `wrapper`
+
 #### v0.1.0
 
 - 🎇 Added CHANGELOG
