@@ -1,6 +1,6 @@
 {
   "name": "v-github-activity",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Componente Vue para mostrar la actividad reciente de github",
   "author": "amaury.tobiasqr@gmail.com",
   "license": "MIT",
@@ -16,8 +16,8 @@
   ],
   "main": "dist/v-github-activity.ssr.js",
   "module": "dist/v-github-activity.esm.js",
-  "browser": "dist/v-github-activity.min,js",
-  "unpkg": "dist/v-github-activity.min,js",
+  "browser": "dist/v-github-activity.min.js",
+  "unpkg": "dist/v-github-activity.min.js",
   "files": [
     "dist/*",
     "src/**/*.vue",
@@ -28,7 +28,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "serve": "vue serve src/components/GithubFeed.vue",
+    "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
