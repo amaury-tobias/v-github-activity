@@ -30,13 +30,10 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/comment'
 import { fromNow, hash } from '../../utils/FormatTools'
 
 export default {
   name: 'commit-comment-event',
-  components: { Octicon },
   props: {
     event: { required: true }
   },

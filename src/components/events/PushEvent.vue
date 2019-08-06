@@ -40,13 +40,10 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/repo-push'
 import { fromNow, hash, branch } from '../../utils/FormatTools'
 
 export default {
   name: 'push-event',
-  components: { Octicon },
   props: {
     event: { required: true }
   },

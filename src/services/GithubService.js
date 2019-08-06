@@ -1,16 +1,16 @@
 'use strict'
 
-import axios from 'axios'
-
-const client = axios.create({
-  baseURL: 'https://api.github.com/users/'
-})
-
 export default {
   user: login => {
-    return client.get(login)
+    return fetch(`https://api.github.com/users/${login}`)
+      .then(res => res.json())
+      .then(response => response)
+      .catch(e => e)
   },
   events: login => {
-    return client.get(login + '/events')
+    return fetch(`https://api.github.com/users/${login}/events`)
+      .then(res => res.json())
+      .then(response => response)
+      .catch(e => e)
   }
 }

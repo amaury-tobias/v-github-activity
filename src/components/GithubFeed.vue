@@ -44,38 +44,12 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/mark-github'
 import service from '../services/GithubService'
-
-import PushEvent from './events/PushEvent.vue'
-import PullRequestEvent from './events/PullRequestEvent.vue'
-import CreateEvent from './events/CreateEvent.vue'
-import DeleteEvent from './events/DeleteEvent.vue'
-import WatchEvent from './events/WatchEvent.vue'
-import IssuesEvent from './events/IssuesEvent.vue'
-import IssueCommentEvent from './events/IssueCommentEvent.vue'
-import ForkEvent from './events/ForkEvent.vue'
-import CommitCommentEvent from './events/CommitCommentEvent.vue'
-import PublicEvent from './events/PublicEvent.vue'
 
 export default {
   name: 'github-feed',
-  components: {
-    Octicon,
-    PushEvent,
-    PullRequestEvent,
-    CreateEvent,
-    DeleteEvent,
-    WatchEvent,
-    IssuesEvent,
-    IssueCommentEvent,
-    ForkEvent,
-    CommitCommentEvent,
-    PublicEvent
-  },
   props: {
-    login: { required: true }
+    login: { required: true, default: 'amaury-tobias' }
   },
   data: () => ({
     user: {},
@@ -87,20 +61,22 @@ export default {
     service
       .user(this.login)
       .then(response => {
-        this.user = response.data
+        this.user = response
         service
           .events(this.login)
           .then(events => {
             this.loading = false
             this.error = false
-            this.events = events.data
+            this.events = events
           })
-          .catch(() => {
+          .catch(e => {
+            console.warn(e)
             this.loading = false
             this.error = true
           })
       })
-      .catch(() => {
+      .catch(e => {
+        console.warn(e)
         this.loading = false
         this.error = true
       })

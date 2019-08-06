@@ -1,7 +1,6 @@
 {
   "name": "v-github-activity",
-  "version": "0.0.1-beta",
-  "main": "src/index.js",
+  "version": "0.1.0",
   "description": "Componente Vue para mostrar la actividad reciente de github",
   "author": "amaury.tobiasqr@gmail.com",
   "license": "MIT",
@@ -15,7 +14,10 @@
     "vue",
     "vue-component"
   ],
-  "module": "src/index.js",
+  "main": "dist/v-github-activity.ssr.js",
+  "module": "dist/v-github-activity.esm.js",
+  "browser": "dist/v-github-activity.min,js",
+  "unpkg": "dist/v-github-activity.min,js",
   "files": [
     "dist/*",
     "src/**/*.vue",
@@ -26,15 +28,16 @@
     "LICENSE"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue serve src/components/GithubFeed.vue",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit",
+    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
+    "prepare": "npm run build"
   },
-  "dependencies": {
-    "axios": "^0.19.0",
-    "vue-octicon": "^2.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
@@ -44,10 +47,18 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.2",
     "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.2.3",
+    "minimist": "^1.2.0",
     "prettier": "^1.18.2",
+    "rollup": "^1.19.3",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-vue": "^5.0.1",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }

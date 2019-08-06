@@ -17,14 +17,11 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/star'
 import { fromNow } from '../../utils/FormatTools'
 
 export default {
   name: 'watch-event',
-  components: { Octicon },
-  props: {
+   props: {
     event: { required: true }
   },
   methods: {

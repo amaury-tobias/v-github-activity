@@ -30,13 +30,10 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/git-pull-request'
 import { fromNow } from '../../utils/FormatTools'
 
 export default {
   name: 'pull-request-event',
-  components: { Octicon },
   props: {
     event: { required: true }
   },

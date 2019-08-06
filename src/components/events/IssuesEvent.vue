@@ -1,9 +1,9 @@
 <template>
   <div class="github-event" style="padding-bottom: 0.5em !important;">
-    <span
-      class="event-octicon octicon dashboard-event-icon"
-      :class="event.payload.action === 'opened' ? 'octicon-issue-opened' : 'octicon-issue-closed'"
-    ></span>
+    <octicon
+      class="event-octicon"
+      :name="event.payload.action === 'opened' ? 'octicon-issue-opened' : 'octicon-issue-closed'"
+    />
     <div style="display: inline-block;" class="event-text" v-if="event">
       <a style="text-transform: capitalize;">{{ event.actor.login }}</a>
       <b>
@@ -22,8 +22,7 @@
     </div>
     <ul>
       <li class="event-text event-detail" style="list-style: none">
-        <span class="event-octicon octicon octicon-chevron-right dashboard-event-icon"></span
-        >{{ event.payload.issue.title }}
+        {{ event.payload.issue.title }}
       </li>
     </ul>
   </div>

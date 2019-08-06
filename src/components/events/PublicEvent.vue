@@ -1,6 +1,6 @@
 <template>
   <div class="github-event">
-    <span class="event-octicon octicon octicon-radio-tower dashboard-event-icon"></span>
+    <octicon class="event-octicon" name="radio-tower" />
     <div style="display: inline-block;" class="event-text" v-if="event">
       <a style="text-transform: capitalize;">{{ event.actor.login }}</a>
       <b>

@@ -24,14 +24,10 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/repo'
-import 'vue-octicon/icons/git-branch'
 import { fromNow } from '../../utils/FormatTools'
 
 export default {
   name: 'create-event',
-  components: { Octicon },
   props: {
     event: { required: true }
   },

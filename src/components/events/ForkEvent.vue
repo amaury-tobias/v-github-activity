@@ -21,13 +21,10 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/repo-forked'
 import { fromNow } from '../../utils/FormatTools'
 
 export default {
   name: 'fork-event',
-  components: { Octicon },
   props: {
     event: { required: true }
   },

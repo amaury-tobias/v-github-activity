@@ -24,13 +24,10 @@
 </template>
 
 <script>
-import Octicon from 'vue-octicon/components/Octicon'
-import 'vue-octicon/icons/comment'
 import { fromNow } from '../../utils/FormatTools'
 
 export default {
   name: 'issue-comment-event',
-  components: { Octicon },
   props: {
     event: { required: true }
   },
