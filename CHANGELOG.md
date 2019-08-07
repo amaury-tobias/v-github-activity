@@ -1,3 +1,8 @@
+### v1.0.1
+
+- 🔮 **[FIX]** SSR build for `Nuxt`
+- ❌ Removed `browser` from `package.json`
+
 ### v1.0.0 - Akita
 
 - 🔮 Replace octicons with SVG

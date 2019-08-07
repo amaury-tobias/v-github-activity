@@ -10,7 +10,9 @@ import ForkEvent from './components/events/ForkEvent.vue'
 import CommitCommentEvent from './components/events/CommitCommentEvent.vue'
 import PublicEvent from './components/events/PublicEvent.vue'
 
-export function install(Vue) {
+function install(Vue) {
+  if (install.installed) return
+  install.installed = true
   Vue.component('github-feed', GithubFeed)
   Vue.component('push-event', PushEvent)
   Vue.component('pull-request-event', PullRequestEvent)
@@ -22,6 +24,20 @@ export function install(Vue) {
   Vue.component('commit-comment-event', CommitCommentEvent)
   Vue.component('fork-event', ForkEvent)
   Vue.component('public-event', PublicEvent)
+}
+
+const plugin = {
+  install
+}
+
+let GlobalVue = null
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin)
 }
 
 export {
@@ -38,18 +54,4 @@ export {
   PublicEvent
 }
 
-const plugin = {
-  install
-}
-
 export default plugin
-
-let GlobalVue = null
-if (typeof window !== 'undefined') {
-  GlobalVue = window.Vue
-} else if (typeof global !== 'undefined') {
-  GlobalVue = global.Vue
-}
-if (GlobalVue) {
-  GlobalVue.use(plugin)
-}
