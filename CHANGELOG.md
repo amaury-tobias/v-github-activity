@@ -1,3 +1,9 @@
+### v1.0.2
+- 🎇 Added README
+- 🔮 Github Icon nows hide on mobile
+- 🔮 Github actions configuration
+- 🔮 Dependencies update
+
 ### v1.0.1
 
 - 🔮 **[FIX]** SSR build for `Nuxt`
@@ -18,8 +24,8 @@
 - 🎇 Added LICENSE
 - 🎇 Update README
 - 🎇 Profile and events request using `fetch()`
-- ❌ Removido `axios`
-- ❌ Removido `vue-octicons`
+- ❌ Removed `axios`
+- ❌ Removed `vue-octicons`
 - 🔮 Module build using `Rollup`
 
 #### v0.0.1

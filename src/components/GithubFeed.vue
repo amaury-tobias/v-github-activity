@@ -198,5 +198,8 @@ export default {
   .event-octicon {
     display: none !important;
   }
+  .github-icon {
+    display: none !important;
+  }
 }
 </style>
