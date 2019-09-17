@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/v-github-activity"></script>
   </head>
   <body>
@@ -24,21 +25,6 @@
     /></a>
 
     <div id="app">
-      <section class="hero">
-        <div class="hero-body">
-          <div class="container has-text-centered">
-            <h1 class="title is-size-1">
-              <v-avatar inline username="V A" rounded></v-avatar>
-              v-github-activity
-            </h1>
-            <h2 class="subtitle heading has-text-weight-light">
-              Vue.js Component
-            </h2>
-          </div>
-        </div>
-      </section>
-
-
        <section class="section">
         <p class="title is-size-2">Instalación</p>
         <p><code>npm install v-github-activity</code></p>
@@ -54,7 +40,7 @@
         <pre><code class="lang-html">
   &lt;template&gt;
     &lt;div&gt;
-      &lt;github-feed login='amaury-tobias'&gt;
+      &lt;github-feed login='amaury-tobias' token='xxxxxx'&gt;
     &lt;/div&gt;
   &lt;/template&gt;
           </code></pre>
@@ -85,7 +71,7 @@
         <br>
         <p><code>*.vue &lt;template&gt;</code></p>
         <pre><code class="lang-html">
-  &lt;github-feed login='amaury-tobias'&gt;</span>
+  &lt;github-feed login='amaury-tobias' token='xxxxxx'&gt;</span>
           </code></pre>
           <br>
           <p class="title is-size-4">BROWSER</p>
@@ -98,7 +84,7 @@
       &lt;/head&gt;
       &lt;body&gt;
         &lt;div id="app"&gt;
-          &lt;github-feed login='amaury-tobias'&gt;
+          &lt;github-feed login='amaury-tobias' token='xxxxxx'&gt;
         &lt;/div&gt;
         &lt;script&gt;
           Vue.use(githubFeed)
@@ -129,6 +115,13 @@
               <td>String</td>
               <td>GitHub username</td>
             </tr>
+            <tr>
+              <td>token</td>
+              <td>N</td>
+              <td>-</td>
+              <td>String</td>
+              <td>Github Personal access tokens "OAUTH-TOKEN" to increase the api `rate_limit`</td>
+            </tr>
           </tbody>
         </table>
         <br>
@@ -148,7 +141,7 @@
         <pre><code class="lang-bash">npm test</code></pre>
         <br>
         <p class="title is-size-4">DEMO</p>
-        <code>&lt;github-feed login="amaury-tobias" /&gt;</code>
+        <code>&lt;github-feed login="amaury-tobias" token="xxxxxx" /&gt;</code>
         <github-feed login="amaury-tobias"/>
 <hr>
       </section>

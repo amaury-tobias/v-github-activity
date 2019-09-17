@@ -25,7 +25,7 @@ v-avatar es un modulo UMD, por lo que puede ser utilizado en tanto en una instan
 ```js
 <template>
 <div>
-  <github-feed login="amaury-tobias"/>
+  <github-feed login="amaury-tobias" token='xxxxx'/>
 </div>
 </template>
 
@@ -71,9 +71,7 @@ module.exports = {
 `*.vue <template>`
 
 ```html
-<no-ssr>
-  <github-feed login="amaury-tobias" />
-</no-ssr>
+<github-feed login="amaury-tobias" token="xxxxx" />
 ```
 
 ### Browser
@@ -87,7 +85,7 @@ module.exports = {
   </head>
   <body>
     <div id="app">
-      <github-feed login="amaury-tobias" />
+      <github-feed login="amaury-tobias" token="xxxxx" />
     </div>
     <script>
       var app = new Vue({
@@ -103,20 +101,10 @@ module.exports = {
 
 ## Props
 
-<table class="table">
-<thead><tr>
-  <th>Name</th><th>Required</th><th>Default</th><th>Type</th><th>Description</th>
-</tr></thead>
-<tbody>
-  <tr>
-    <td>login</td>
-    <td> Y </td>
-    <td> - </td>
-    <td> String </td>
-    <td>GitHub username / Nombre de usuario de GitHub.</td>
-    </tr>
-</tbody>
-</table>
+| Name  | Required | Default | Type   | Description                                                                  |
+| ----- | -------- | ------- | ------ | ---------------------------------------------------------------------------- |
+| login | Y        | -       | String | GitHub username                                                              |
+| token | N        | -       | String | Github Personal access tokens "OAUTH-TOKEN" to increase the api `rate_limit` |
 
 ## Build Setup
 
@@ -143,7 +131,4 @@ Released under the [MIT](LICENSE) License.
 
 ## TO DO
 
-- ~~Build module using `Rollup`~~
-- ~~Replace `axios` using `fetch`~~
-- ~~Add SGV icons~~
-- Complete Unit testing
+- Unit testing

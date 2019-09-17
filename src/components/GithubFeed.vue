@@ -61,7 +61,7 @@ export default {
   name: 'github-feed',
   props: {
     login: { required: true },
-    token: { required: true }
+    token: { required: false }
   },
   data: () => ({
     user: {},
