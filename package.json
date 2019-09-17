@@ -1,6 +1,6 @@
 {
   "name": "v-github-activity",
-  "version": "1.0.2",
+  "version": "2.0.0-beta",
   "description": "Componente Vue para mostrar la actividad reciente de github",
   "author": "amaury.tobiasqr@gmail.com",
   "license": "MIT",
