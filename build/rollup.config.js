@@ -27,22 +27,15 @@ const baseConfig = {
   }
 }
 
-// UMD/IIFE shared settings: externals and output.globals
-// Refer to https://rollupjs.org/guide/en#output-globals for details
-const external = [
-  // list external dependencies, exactly the way it is written in the import statement.
-  // eg. 'jquery'
-]
-const globals = {
-  // Provide global variable names to replace your external imports
-  // eg. jquery: '$'
-}
+const external = ['axios']
+const globals = { axios: 'axios' }
 
 // Customize configs for individual targets
 const buildFormats = []
 if (!argv.format || argv.format === 'es') {
   const esConfig = {
     ...baseConfig,
+    external,
     output: {
       file: 'dist/v-github-activity.esm.js',
       format: 'esm',
@@ -114,6 +107,4 @@ if (!argv.format || argv.format === 'iife') {
   }
   buildFormats.push(unpkgConfig)
 }
-
-// Export config
 export default buildFormats

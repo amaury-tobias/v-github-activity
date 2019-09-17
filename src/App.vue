@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>v-github-activity</h1>
-    <github-feed login="amaury-tobias" />
+    <github-feed login="amaury-tobias" token="" />
   </div>
 </template>
 

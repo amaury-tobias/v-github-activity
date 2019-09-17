@@ -60,7 +60,8 @@ import service from '../services/GithubService'
 export default {
   name: 'github-feed',
   props: {
-    login: { required: true }
+    login: { required: true },
+    token: { required: true }
   },
   data: () => ({
     user: {},
@@ -70,11 +71,11 @@ export default {
   }),
   created() {
     service
-      .user(this.login)
+      .user(this.login, this.token)
       .then(response => {
         this.user = response
         service
-          .events(this.login)
+          .events(this.login, this.token)
           .then(events => {
             this.loading = false
             this.error = false
