@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   title: 'v-github-activity',
-  base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/v-github-activity/' : '/',
+  base: '/v-github-activity/',
   locales: {
     '/': {
       lang: 'en-US',
