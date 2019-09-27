@@ -6,11 +6,11 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
-      description: 'vue github component'
+      description: 'Vue github Component'
     },
     '/es/': {
       lang: 'es-ES',
-      description: 'componente de github para vue.js'
+      description: 'Componente de github para Vue.js'
     }
   },
   themeConfig: {
