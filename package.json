@@ -34,7 +34,9 @@
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "docs:build": "cross-env DEPLOY_ENV=GH_PAGES vuepress build docs",
+    "docs:dev": "vuepress dev docs"
   },
   "peerDependencies": {
     "axios": "^0.19.0"
@@ -46,11 +48,12 @@
     "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
+    "@vuepress/plugin-register-components": "^1.1.0",
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "cross-env": "^6.0.0",
     "eslint": "^6.4.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.2.3",
     "minimist": "^1.2.0",
     "prettier": "^1.18.2",
@@ -61,7 +64,8 @@
     "rollup-plugin-terser": "^5.1.2",
     "rollup-plugin-vue": "^5.0.1",
     "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.1.0"
   },
   "dependencies": {
     "axios": "^0.19.0"

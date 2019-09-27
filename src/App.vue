@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <h1>v-github-activity</h1>
-    <github-feed login="amaury-tobias" token="" />
+    <github-feed login="amaury-tobias" :token="token" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data: () => ({
+    token: process.env.VUE_APP_GH_TOKEN
+  })
 }
 </script>
 

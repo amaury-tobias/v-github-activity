@@ -1,4 +1,20 @@
+### v2.1.0
+- 🎇 Skeleton Screens added to show loading
+- 🎇 Event `status` to expose status and errors
+- 🔮 Vuepress documentation
+- 🔮 Imporvements on GHService and FormatTools
+
+### v2.0.0 - Boxer
+
+- 🔮 Moved from `fetch` to `axios` to work on nuxt sir
+- 🎇 Support `OAUTH_TOKEN` from GitHub to increase the `rate_limit`
+
+# ⚠️ POSSIBLY BREAKING
+
+- 🎇 `token` prop
+
 ### v1.0.2
+
 - 🎇 Added README
 - 🔮 Github Icon nows hide on mobile
 - 🔮 Github actions configuration

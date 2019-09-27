@@ -1,7 +1,8 @@
 <template>
   <div class="feed">
     <div class="header-wrapper">
-      <div class="header">
+      <skeleton-header-screen class="header" v-if="loading" />
+      <div v-else class="header">
         <svg
           class="github-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -26,27 +27,30 @@
     </div>
     <div class="events-wrapper">
       <div class="feed-list">
-        <div class="event-list">
+        <div v-if="loading" class="event-list">
+          <skeleton-screen v-for="i in 3" :key="i" />
+        </div>
+        <div v-else class="event-list">
           <div v-for="event in events" :key="event.id">
-            <push-event :event="event" v-if="event.type === 'PushEvent'"></push-event>
-            <pull-request-event
-              :event="event"
-              v-if="event.type === 'PullRequestEvent'"
-            ></pull-request-event>
-            <create-event :event="event" v-if="event.type === 'CreateEvent'"></create-event>
-            <watch-event :event="event" v-if="event.type === 'WatchEvent'"></watch-event>
-            <delete-event :event="event" v-if="event.type === 'DeleteEvent'"></delete-event>
-            <issues-event :event="event" v-if="event.type === 'IssuesEvent'"></issues-event>
-            <issue-comment-event
-              :event="event"
-              v-if="event.type === 'IssueCommentEvent'"
-            ></issue-comment-event>
-            <fork-event :event="event" v-if="event.type === 'ForkEvent'"></fork-event>
-            <commit-comment-event
-              :event="event"
-              v-if="event.type === 'CommitCommentEvent'"
-            ></commit-comment-event>
-            <public-event :event="event" v-if="event.type === 'PublicEvent'"></public-event>
+            <push-event :event="event" v-if="event.type === 'PushEvent'" />
+
+            <pull-request-event :event="event" v-if="event.type === 'PullRequestEvent'" />
+
+            <create-event :event="event" v-if="event.type === 'CreateEvent'" />
+
+            <watch-event :event="event" v-if="event.type === 'WatchEvent'" />
+
+            <delete-event :event="event" v-if="event.type === 'DeleteEvent'" />
+
+            <issues-event :event="event" v-if="event.type === 'IssuesEvent'" />
+
+            <issue-comment-event :event="event" v-if="event.type === 'IssueCommentEvent'" />
+
+            <fork-event :event="event" v-if="event.type === 'ForkEvent'" />
+
+            <commit-comment-event :event="event" v-if="event.type === 'CommitCommentEvent'" />
+
+            <public-event :event="event" v-if="event.type === 'PublicEvent'" />
           </div>
         </div>
       </div>
@@ -66,31 +70,26 @@ export default {
   data: () => ({
     user: {},
     events: [],
-    loading: false,
+    loading: true,
     error: false
   }),
-  created() {
+  mounted() {
     service
       .user(this.login, this.token)
-      .then(response => {
-        this.user = response
-        service
-          .events(this.login, this.token)
-          .then(events => {
-            this.loading = false
-            this.error = false
-            this.events = events
-          })
-          .catch(e => {
-            console.warn(e)
-            this.loading = false
-            this.error = true
-          })
+      .then(res => {
+        this.user = res
+        service.events(this.login, this.token).then(events => {
+          this.loading = false
+          this.error = false
+          this.events = events
+          this.$emit('status', false, null)
+        })
       })
       .catch(e => {
         console.warn(e)
         this.loading = false
         this.error = true
+        this.$emit('status', true, e)
       })
   }
 }
@@ -195,7 +194,7 @@ export default {
   color: #666666;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .event-octicon {
     display: none !important;
   }

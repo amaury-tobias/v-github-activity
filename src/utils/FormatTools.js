@@ -53,12 +53,8 @@ const fromNow = (date, opts) => {
   return val
 }
 
-const hash = sha => {
-  return sha.substr(sha.length - 6)
-}
+const hash = sha => sha.substr(sha.length - 6)
 
-const branch = ref => {
-  return ref.replace('refs/heads/', '')
-}
+const branch = ref => ref.replace('refs/heads/', '')
 
 export { fromNow, hash, branch }

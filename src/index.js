@@ -1,4 +1,7 @@
 import GithubFeed from './components/GithubFeed.vue'
+import SkeletonScreen from './components/SkeletonScreen.vue'
+import SkeletonHeaderScreen from './components/SkeletonHeaderScreen.vue'
+
 import PushEvent from './components/events/PushEvent.vue'
 import PullRequestEvent from './components/events/PullRequestEvent.vue'
 import CreateEvent from './components/events/CreateEvent.vue'
@@ -24,6 +27,8 @@ function install(Vue) {
   Vue.component('commit-comment-event', CommitCommentEvent)
   Vue.component('fork-event', ForkEvent)
   Vue.component('public-event', PublicEvent)
+  Vue.component('skeleton-screen', SkeletonScreen)
+  Vue.component('skeleton-header-screen', SkeletonHeaderScreen)
 }
 
 const plugin = {
@@ -51,7 +56,9 @@ export {
   IssueCommentEvent,
   ForkEvent,
   CommitCommentEvent,
-  PublicEvent
+  PublicEvent,
+  SkeletonScreen,
+  SkeletonHeaderScreen
 }
 
 export default plugin
