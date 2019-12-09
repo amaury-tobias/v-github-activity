@@ -1,8 +1,7 @@
 <template>
   <div class="feed">
     <div class="header-wrapper">
-      <skeleton-header-screen class="header" v-if="loading" />
-      <div v-else class="header">
+      <div class="header">
         <svg
           class="github-icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,30 +26,31 @@
     </div>
     <div class="events-wrapper">
       <div class="feed-list">
-        <div v-if="loading" class="event-list">
-          <skeleton-screen v-for="i in 3" :key="i" />
-        </div>
-        <div v-else class="event-list">
+        <div class="event-list">
           <div v-for="event in events" :key="event.id">
-            <push-event :event="event" v-if="event.type === 'PushEvent'" />
+            <component :is="event.type" :event="event" />
 
-            <pull-request-event :event="event" v-if="event.type === 'PullRequestEvent'" />
+            <push-event v-if="event.type === 'PushEvent'" :event="event" />
+            <pull-request-event
+              v-if="event.type === 'PullRequestEvent'"
+              :event="event"
+            />
+            <create-event v-if="event.type === 'CreateEvent'" :event="event" />
+            <watch-event v-if="event.type === 'WatchEvent'" :event="event" />
+            <delete-event v-if="event.type === 'DeleteEvent'" :event="event" />
+            <issues-event v-if="event.type === 'IssuesEvent'" :event="event" />
+            <issue-comment-event
+              v-if="event.type === 'IssueCommentEvent'"
+              :event="event"
+            />
+            <fork-event v-if="event.type === 'ForkEvent'" :event="event" />
 
-            <create-event :event="event" v-if="event.type === 'CreateEvent'" />
+            <commit-comment-event
+              v-if="event.type === 'CommitCommentEvent'"
+              :event="event"
+            />
 
-            <watch-event :event="event" v-if="event.type === 'WatchEvent'" />
-
-            <delete-event :event="event" v-if="event.type === 'DeleteEvent'" />
-
-            <issues-event :event="event" v-if="event.type === 'IssuesEvent'" />
-
-            <issue-comment-event :event="event" v-if="event.type === 'IssueCommentEvent'" />
-
-            <fork-event :event="event" v-if="event.type === 'ForkEvent'" />
-
-            <commit-comment-event :event="event" v-if="event.type === 'CommitCommentEvent'" />
-
-            <public-event :event="event" v-if="event.type === 'PublicEvent'" />
+            <public-event v-if="event.type === 'PublicEvent'" :event="event" />
           </div>
         </div>
       </div>
@@ -59,13 +59,40 @@
 </template>
 
 <script>
+import PushEvent from './events/PushEvent.js'
+import WatchEvent from './events/WatchEvent.js'
+import ReleaseEvent from './events/ReleaseEvent.js'
+
+import PullRequestEvent from './events/PullRequestEvent.vue'
+import CreateEvent from './events/CreateEvent.vue'
+import DeleteEvent from './events/DeleteEvent.vue'
+
+import IssuesEvent from './events/IssuesEvent.vue'
+import IssueCommentEvent from './events/IssueCommentEvent.vue'
+import ForkEvent from './events/ForkEvent.vue'
+import CommitCommentEvent from './events/CommitCommentEvent.vue'
+import PublicEvent from './events/PublicEvent.vue'
+
 import service from '../services/GithubService'
 
 export default {
-  name: 'github-feed',
+  name: 'GithubFeed',
+  components: {
+    PushEvent,
+    WatchEvent,
+    ReleaseEvent,
+    PullRequestEvent,
+    CreateEvent,
+    DeleteEvent,
+    IssuesEvent,
+    IssueCommentEvent,
+    ForkEvent,
+    CommitCommentEvent,
+    PublicEvent
+  },
   props: {
-    login: { required: true },
-    token: { required: false }
+    login: { required: true, type: String },
+    token: { required: false, type: String, default: undefined }
   },
   data: () => ({
     user: {},
@@ -103,8 +130,9 @@ export default {
   min-height: 200px;
   width: 100%;
   min-width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial,
+    sans-serif;
   font-size: 1rem;
   color: #373a3c;
 }

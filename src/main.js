@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import vGithubActivity from './index'
+import { GithubFeed } from './build'
+
+// Vue.use(vGithubActivity)
+Vue.component('github-feed', GithubFeed)
 
 Vue.config.productionTip = false
-
-Vue.use(vGithubActivity)
 
 new Vue({
   render: h => h(App)
